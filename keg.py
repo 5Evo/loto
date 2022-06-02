@@ -25,9 +25,3 @@ if __name__ == '__main__':
 
     bug_of_kegs = Kegs()
 
-    # print(f'новый мешок: {len(bug_of_kegs)}, {bug_of_kegs.numbers}, ')
-    # next_keg = bug_of_kegs.get_random_keg()
-    # print(type(bug_of_kegs.numbers))
-    # print(f'Выпало число: {next_keg}')
-    # print(f'В мешке осталось: {len(bug_of_kegs)}, {bug_of_kegs.numbers}')
-
