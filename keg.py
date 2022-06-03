@@ -19,15 +19,25 @@ class Kegs:
     def __len__(self):
         return len(self.numbers)
 
+    def __eq__(self, other):
+        '''
+        Мешки равны, если количество бочонков (чисел) в них совпадают
+        сами числа могут не совпадать, тк мы смотрим на мешок снаружи и никогда не знаем, какие в них числа
+        :param other:
+        :return:
+        '''
+        return len(self.numbers) == len(other.numbers)
+
+    def __ne__(self, other):
+        '''
+        мешки не совпадают, если в них разное количество чисел
+        :param other:
+        :return:
+        '''
+        return len(self.numbers) != len(other.numbers)
 
 
 if __name__ == '__main__':
 
     bug_of_kegs = Kegs()
-
-    # print(f'новый мешок: {len(bug_of_kegs)}, {bug_of_kegs.numbers}, ')
-    # next_keg = bug_of_kegs.get_random_keg()
-    # print(type(bug_of_kegs.numbers))
-    # print(f'Выпало число: {next_keg}')
-    # print(f'В мешке осталось: {len(bug_of_kegs)}, {bug_of_kegs.numbers}')
 

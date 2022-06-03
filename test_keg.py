@@ -8,6 +8,9 @@ class TestKegs:
     def test_init(self):        # новый мешок должен быть всегда полный
         assert self.bug.numbers == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90]
 
+    def test_str(self):
+        assert len(self.bug) == 90
+
     def test_get_random_keg(self):
         full_bug = set(self.bug.numbers)            # запомнили все числа из мешка
         next_number = self.bug.get_random_keg()     # вытянули из мешка случайный бочонок
@@ -16,4 +19,23 @@ class TestKegs:
 
     def test_len_(self):
         assert len(self.bug) == 90                  # проверяем магический метод len(). В новом мешке 90 бочонков
+
+    def test_eq(self):
+        # создадим второй мещок, из обоих мешков вытащим по 3 случайных числа. После этого мешки должны быть равны
+        other = Kegs()
+        for i in range(2):
+            other.get_random_keg()
+            self.bug.get_random_keg()
+        # print(f'размер мешка: {len(self.bug)}')       # можно убедиться, что в мешках осталось по 88 чисел
+        assert self.bug.numbers != other.numbers        # убедимся что числа внутри мешков разные
+        assert self.bug == other                        # при этом сами мешки равны
+
+    def test_ne(self):
+        # создадим 2 обинаковых мешка, из одного вынем бочонок. При этом мешки должны быть !=
+        other = Kegs()
+        # other.numbers = self.bug.numbers          # 2 обинаковых полных мешка
+        assert other == self.bug                    # проверим что мешки равны
+        self.bug.get_random_keg()                   # из одного мешка вытащим 1 число
+        assert len(self.bug.numbers) != len(other.numbers)  # проверим что количество бочонков в мешках отличается
+        assert self.bug != other                    # теперь мешки стали не равны
 
