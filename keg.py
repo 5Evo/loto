@@ -19,6 +19,22 @@ class Kegs:
     def __len__(self):
         return len(self.numbers)
 
+    def __eq__(self, other):
+        '''
+        Мешки равны, если количество бочонков (чисел) в них совпадают
+        сами числа могут не совпадать, тк мы смотрим на мешок снаружи и никогда не знаем, какие в них числа
+        :param other:
+        :return:
+        '''
+        return len(self.numbers) == len(other.numbers)
+
+    def __ne__(self, other):
+        '''
+        мешки не совпадают, если в них разное количество чисел
+        :param other:
+        :return:
+        '''
+        return len(self.numbers) != len(other.numbers)
 
 
 if __name__ == '__main__':

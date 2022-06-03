@@ -48,3 +48,18 @@ class TestCards:
             del_number = str(self.card.numbers[0])      # выбрали самое первое число из оставшихся чисел на карте
             self.card.cross_out(del_number)             # зачеркнули его
         assert self.card.is_empty()             # вычеркнули все числа по порядку, теперь карта должна быть пустой
+
+    def test_eq(self):
+        other = Cards()                 # Создаем новую карту
+        #print('\nOther:\n', other)
+        #print('\nSelf:\n', self.card)
+        other.numbers = self.card.numbers   # Все числа из первой карты переносим в новую
+        #print(other.numbers, '\n', self.card.numbers)      # можем убедиться, что числа действительно совпадают
+        assert other == self.card           # все числа совпадают, значит карты должны быть равны
+
+    def test_ne(self):
+        other = Cards()  # Создаем новую карту
+        # print('\nOther:\n', other)
+        # print('\nSelf:\n', self.card)
+        # print(other.numbers, '\n', self.card.numbers)      # можем убедиться, что числа на картах не совпадают
+        assert other != self.card  # все числа совпадают, значит карты должны быть равны

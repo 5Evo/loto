@@ -89,6 +89,14 @@ class Cards:
             item = int(item)
         return item in self.numbers
 
+    def __eq__(self, other):
+        '''
+        2 карты равны, если числа на них совпадают
+        :param other:
+        :return:
+        '''
+        return self.numbers == other.numbers
+
     def cross_out(self, number):
         """
         если такого числа в карточке нет - "Проиграл"

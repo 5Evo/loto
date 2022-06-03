@@ -14,6 +14,17 @@ class CPUPlayer:
         result = f'{self.name} - {type_of_player}\n{self.card}'
         return result
 
+    def __eq__(self, other):
+        '''
+        Игроки равны, если они одинакового типа (комп/человек) и имя у них одинаковое
+        При этом карточки мы не проверяем, т.к. одному игорку могут выпадать разные карточки
+        :param other:
+        :return:
+        '''
+        return (self.name == other.name) and (type(self).__name__ == type(other).__name__)
+
+
+
     def move(self, number):
         #print(f'move - Комп: {number} {number in self.card}')
         if number in self.card.numbers:             # компьютер зачеркивает число
@@ -58,7 +69,7 @@ if __name__ == '__main__':
     bug_of_kegs = Kegs()
     card_CPU = Cards()
     player1 = create_player('Alex', '0', card_CPU)
-    # print(f'вот и новый игрок: {player1}, {type(player1)}')
+    print(f'вот и новый игрок: {player1}, {type(player1)}')
     # print(player1.name, '\n', player1.card)
     print(player1)
     for next_number in range (1, 91):

@@ -20,3 +20,22 @@ class TestKegs:
     def test_len_(self):
         assert len(self.bug) == 90                  # проверяем магический метод len(). В новом мешке 90 бочонков
 
+    def test_eq(self):
+        # создадим второй мещок, из обоих мешков вытащим по 3 случайных числа. После этого мешки должны быть равны
+        other = Kegs()
+        for i in range(2):
+            other.get_random_keg()
+            self.bug.get_random_keg()
+        # print(f'размер мешка: {len(self.bug)}')       # можно убедиться, что в мешках осталось по 88 чисел
+        assert self.bug.numbers != other.numbers        # убедимся что числа внутри мешков разные
+        assert self.bug == other                        # при этом сами мешки равны
+
+    def test_ne(self):
+        # создадим 2 обинаковых мешка, из одного вынем бочонок. При этом мешки должны быть !=
+        other = Kegs()
+        # other.numbers = self.bug.numbers          # 2 обинаковых полных мешка
+        assert other == self.bug                    # проверим что мешки равны
+        self.bug.get_random_keg()                   # из одного мешка вытащим 1 число
+        assert len(self.bug.numbers) != len(other.numbers)  # проверим что количество бочонков в мешках отличается
+        assert self.bug != other                    # теперь мешки стали не равны
+
